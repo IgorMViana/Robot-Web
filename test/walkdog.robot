@@ -3,14 +3,13 @@ Documentation     A sample of Web Automation using Walkdog page
 
 Resource          ../resources/walkdogMainPage.resource
 Default Tags      positive
-Library    Browser
 
 *** Test Cases ***
-Check page's title
+Página principal
     Abrir página do Walkdog
     Get Title    equals    Walkdog by Papito
 
-Register page
+Cadastro
     Abrir página do Walkdog
     Ir para a página de cadastro
     Preencher dados Pessoais

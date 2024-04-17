@@ -5,7 +5,7 @@ Library           Browser
 
 *** Keywords ***
 Abrir página do Walkdog
-    New Browser    chromium    false
+    New Browser    chromium    true
     New Page    https://walkdog.vercel.app
 
 Ir para a página de cadastro
