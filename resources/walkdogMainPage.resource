@@ -5,7 +5,7 @@ Library           Browser
 
 *** Keywords ***
 Abrir página do Walkdog
-    New Browser    chromium    true
+    New Browser    chromium    false
     New Page    https://walkdog.vercel.app
 
 Ir para a página de cadastro
@@ -43,3 +43,18 @@ Checar informações de sucesso
     Get Text    id=swal2-title    equals    Obrigado!
     Get Text    id=swal2-html-container    equals    Recebemos o seu cadastro e em breve retornaremos o contato.
     Click    .swal2-actions > .swal2-confirm.swal2-styled
+
+Preencher dados exceto o ${campo}
+    Preencher dados Pessoais
+    Clear Text    input[name=name]
+    #Sleep    10
+    #Preencher informações de endereço
+    #Selecionar atividades extras
+    #Fazer Upload de documento
+
+Checar erro no campo ${campo}
+    #${msg}    Set Variable If    ${campo} equals name    Informe o nome
+    Set Strict Mode    false
+    @{list-error}    Get Element    .alert-error
+    Get Text    @{list-error}    equals    teste
+    #Get Text    .alert-error    equals    ${msg}

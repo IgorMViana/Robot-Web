@@ -18,3 +18,11 @@ Cadastro
     Fazer Upload de documento
     Submeter formulário
     Checar informações de sucesso
+
+Erro quando Nome não preenchido
+    [Tags]    negative
+    Abrir página do Walkdog
+    Ir para a página de cadastro
+    Preencher dados exceto o Nome
+    Submeter formulário
+    Checar erro no campo Nome
