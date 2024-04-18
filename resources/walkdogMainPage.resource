@@ -46,6 +46,7 @@ Checar informações de sucesso
     Get Text    id=swal2-title    equals    Obrigado!
     Get Text    id=swal2-html-container    equals    Recebemos o seu cadastro e em breve retornaremos o contato.
     Click    .swal2-actions > .swal2-confirm.swal2-styled
+    Wait For Elements State    img[alt=Walkdog]    visible
 
 Preencher formulário completo
     Preencher dados Pessoais
