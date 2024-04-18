@@ -20,12 +20,15 @@ Preencher dados Pessoais
 
 Preencher informações de endereço
     Fill Text    input[name=cep]    40270200
-    Click    input[type=button]
+    Clica no botão Buscar CEP
     Get Text    input[name=addressStreet]    equals    Rua Doutor Mário Rego dos Santos
     Fill Text    input[name=addressNumber]    314
     Fill Text    input[name=addressDetails]    apto 603
     Get Text    input[name=addressDistrict]    equals    Vila Laura
     Get Text    input[name=addressCityUf]    equals    Salvador/BA
+
+Clica no botão Buscar CEP
+    Click    input[type=button]
 
 Selecionar atividades extras
     Click    img[alt=Cuidar]
@@ -44,17 +47,38 @@ Checar informações de sucesso
     Get Text    id=swal2-html-container    equals    Recebemos o seu cadastro e em breve retornaremos o contato.
     Click    .swal2-actions > .swal2-confirm.swal2-styled
 
-Preencher dados exceto o ${campo}
+Preencher formulário completo
     Preencher dados Pessoais
-    Clear Text    input[name=name]
-    #Sleep    10
-    #Preencher informações de endereço
-    #Selecionar atividades extras
-    #Fazer Upload de documento
+    Preencher informações de endereço
+    Selecionar atividades extras
+    Fazer Upload de documento
 
-Checar erro no campo ${campo}
-    #${msg}    Set Variable If    ${campo} equals name    Informe o nome
-    Set Strict Mode    false
-    @{list-error}    Get Element    .alert-error
-    Get Text    @{list-error}    equals    teste
-    #Get Text    .alert-error    equals    ${msg}
+Test Template - erro de campo obrigatório
+    [Arguments]    ${campo}
+    Abrir página do Walkdog
+    Ir para a página de cadastro
+    Preencher formulário completo
+    Clear Text    input[name=${campo}]
+    Submeter formulário
+    Checar alerta de erro    ${campo}
+
+Checar alerta de erro
+    [Arguments]    ${error}
+    ${msg}    Set Variable If    
+    ...    '${error}' == 'docEmpty'    Adcione um documento com foto (RG ou CHN)
+    ...    '${error}' == 'cepInvalido'    Informe um CEP válido
+    ...    '${error}' == 'name'    Informe o seu nome completo
+    ...    '${error}' == 'email'    Informe o seu melhor email
+    ...    '${error}' == 'cpf'    Informe o seu CPF
+    ...    '${error}' == 'cep'    Informe o seu CEP
+    ...    '${error}' == 'addressNumber'    Informe um número maior que zero
+    Get Text    .alert-error    equals    ${msg}
+
+Test Template - campo numero
+    [Arguments]    ${num}
+    Abrir página do Walkdog
+    Ir para a página de cadastro
+    Preencher formulário completo
+    Fill Text    input[name=addressNumber]    ${num}
+    Submeter formulário
+    Checar alerta de erro    addressNumber

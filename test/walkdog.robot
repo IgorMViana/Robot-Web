@@ -12,17 +12,37 @@ Página principal
 Cadastro
     Abrir página do Walkdog
     Ir para a página de cadastro
-    Preencher dados Pessoais
-    Preencher informações de endereço
-    Selecionar atividades extras
-    Fazer Upload de documento
+    Preencher formulário completo
     Submeter formulário
     Checar informações de sucesso
 
-Erro quando Nome não preenchido
+Valida erros de campos obrigatórios
+    [Tags]    negative    obrigatorio
+    [Template]    Test Template - erro de campo obrigatório
+    name
+    email
+    cpf
+    cep
+    addressNumber
+
+Valida erro quando documento não é enviado
     [Tags]    negative
     Abrir página do Walkdog
     Ir para a página de cadastro
-    Preencher dados exceto o Nome
+    Preencher dados Pessoais
+    Preencher informações de endereço
     Submeter formulário
-    Checar erro no campo Nome
+    Checar alerta de erro    docEmpty
+
+Valida erro quando CEP inválido
+    [Tags]    negative    CEPInvalido
+    Abrir página do Walkdog
+    Ir para a página de cadastro
+    Clica no botão Buscar CEP
+    Checar alerta de erro    cepInvalido
+
+Valida campo Número com valores não permitidos
+    [Tags]    negative    numero
+    [Template]    Test Template - campo numero
+    0
+    -1
