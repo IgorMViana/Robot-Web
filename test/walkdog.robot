@@ -17,7 +17,7 @@ Cadastro
     Checar informações de sucesso
 
 Valida erros de campos obrigatórios
-    [Tags]    negative    obrigatorio
+    [Tags]    negative
     [Template]    Test Template - erro de campo obrigatório
     name
     email
@@ -35,14 +35,14 @@ Valida erro quando documento não é enviado
     Checar alerta de erro    docEmpty
 
 Valida erro quando CEP inválido
-    [Tags]    negative    CEPInvalido
+    [Tags]    negative
     Abrir página do Walkdog
     Ir para a página de cadastro
     Clica no botão Buscar CEP
     Checar alerta de erro    cepInvalido
 
 Valida campo Número com valores não permitidos
-    [Tags]    negative    numero
+    [Tags]    negative
     [Template]    Test Template - campo numero
     0
     -1
