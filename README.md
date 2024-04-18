@@ -1,6 +1,6 @@
 # Robot-Web
 
-- https://walkdog.vercel.app  ✔✅
+- https://walkdog.vercel.app    ✔
 - https://buger-eats-qa.vercel.app
 - https://demo.automationtesting.in
 - https://www.saucedemo.com
